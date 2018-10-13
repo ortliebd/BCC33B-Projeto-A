@@ -1,0 +1,3 @@
+[submodule "implementacao/decod-mips"]
+	path = implementacao/decod-mips
+	url = ../../rogerioag/decod-mips
