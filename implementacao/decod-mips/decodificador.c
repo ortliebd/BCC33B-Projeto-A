@@ -25,10 +25,10 @@ int mascaraImmediate  = 0x0000FFFF;
 int mascaraAddress    = 0x03FFFFFF;
 
 char *registerName[32] = {"$zero", "$at", "$v0", "$v1", "$a0", "$a1", "$a2",
-                       "$a3",   "$t0", "$t1", "$t2", "$t3", "$t4", "$t5",
-                       "$t6",   "$t7", "$s0", "$s1", "$s2", "$s3", "$s4",
-                       "$s5",   "$s6", "$s7", "$t8", "$t9", "$k0", "$k1",
-                       "$gp",   "$sp", "$fp", "$ra"};
+			  "$a3",   "$t0", "$t1", "$t2", "$t3", "$t4", "$t5",
+			  "$t6",   "$t7", "$s0", "$s1", "$s2", "$s3", "$s4",
+			  "$s5",   "$s6", "$s7", "$t8", "$t9", "$k0", "$k1",
+			  "$gp",   "$sp", "$fp", "$ra"};
 
 /* Função para imprimir um número 32 bits com binário.
    Adaptado de um código encontrado na internet.    */
@@ -106,7 +106,7 @@ unsigned int getFunct(unsigned int ir) {
 }
 
 /* Função que recupera o campo imm. */
-int getImmediate(unsigned int ir) {
+short int getImmediate(unsigned int ir) {
   PRINT_FUNC_NAME;
   unsigned int imm = (ir & mascaraImmediate);
   TRACE("imm: %u\n ", imm);
@@ -128,7 +128,6 @@ int intFromBinary(char *s) {
   TRACE("valor inteiro %d - %X - %b\n", inteiro, inteiro, inteiro);
   bin_prnt_byte(inteiro);
   TRACE("\n");
-
   return inteiro;
 }
 
@@ -136,46 +135,421 @@ int intFromBinary(char *s) {
 void decodificar(unsigned int ir) {
   PRINT_FUNC_NAME;
   switch (getOpCode(ir)) {
-    case 0: { // 000000, Aritmética.
-      switch (getFunct(ir)) {
-        case 0:{
-		if(getRd(ir) == 0 && getRs(ir) == 0 && getRt(ir) == 0){
-			printf("nop\n");
-		}
-		break;
-	}
-	case 32: { // 100000 -> add, R-Type.
-          printf("add ");
-          printf("%s, ", registerName[getRd(ir)]);
-          printf("%s, ", registerName[getRs(ir)]);
-          printf("%s\n", registerName[getRt(ir)]);
-          break;
-        }
-
-        case 34: { // 100010 -> sub, R-Type.
-          printf("sub ");
-          printf("%s, ", registerName[getRd(ir)]);
-          printf("%s, ", registerName[getRs(ir)]);
-          printf("%s\n", registerName[getRt(ir)]);
-          break;
-        }
+  case 0: { // 000000, Aritmética.
+    switch (getFunct(ir)) {
+    case 0:{
+      if(getRd(ir) == 0 && getRs(ir) == 0 && getRt(ir) == 0){
+	printf("nop\n");
+      }else{ // 000000 (sll), R-Type, sll rd, rt, shamt
+	printf("sll ");
+	printf("%s, ", registerName[getRd(ir)]);
+	printf("%s, ", registerName[getRt(ir)]);
+	printf("%d\n", getShamt(ir));
       }
       break;
     }
-    case 2: { // 000010 -> j address (26), J-Type
-      printf("j ");
+    case 1: { // 000001 (bgez), I-Type, bgez rs, imm
+      printf("bgez ");
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%d\n", getImmediate(ir));
+      break;
+    }
+    case 2: { // 000010 (srl), R-Type, srl rd, rt, shamt
+      printf("srl ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRt(ir)]);
+      printf("%d\n", getShamt(ir));
+      break;
+    }
+    case 3: { // 000011 (sra), R-Type, sra rd, rt, shamt
+      printf("sra ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRt(ir)]);
+      printf("%d\n", getShamt(ir));
+      break;
+    }
+    case 4: { // 000100 (sllv), R-Type, sllv rd, rt, rs
+      printf("sllv ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 6: { // 000110 (srlv), R-Type, srlv rd, rt, rs
+      printf("srlv ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 7: { // 000111 (srav), R-Type, srav rd, rt, rs
+      printf("srav ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 8: { // 001000 -> jr register (31), J-Type 
+      printf("jr ");
       printf("0x%0.8X\n", getAddress(ir));
       break;
     }
-    case 35: // 100011 (lw), I-Type. lw rt, imm(rs)
-      printf("lw ");
-      printf("%s, ", registerName[getRt(ir)]);
-      printf("%d", getImmediate(ir));
-      printf("(%s)\n", registerName[getRs(ir)]);
+    case 9: { // 001001 -> jr register (31), J-Type
+      printf("jalr ");
+      printf("0x%0.8X\n", getAddress(ir));
       break;
-
+    }
+    case 10: { // 001010 (movz) R-Type, movz rd, rs, rt
+      printf("movz ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 11: { // 001011 (movn) R-Type, movn rd, rs, rt
+      printf("movn ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 12: { // 001100 syscall
+      printf("syscall\n");
+      break;
+    }
+    case 13: { // 001101 break
+      printf("break\n");
+      break;
+    }
+    case 15: { // 001111 sync
+      printf("sync\n");
+      break;
+    }
+    case 16: { // 010000 mfhi rd
+      printf("mfhi ");
+      printf("%s\n", registerName[getRd(ir)]);
+      break;
+    }
+    case 17: { // 010001 mthi rs
+      printf("mthi ");
+      printf("%s\n", registerName[getRs(ir)]);
+      break;
+    }
+    case 18: { // 010010 mflo rd
+      printf("mflo ");
+      printf("%s\n", registerName[getRd(ir)]);
+      break;
+    }
+    case 19: { // 010011 mtlo rs
+      printf("mtlo ");
+      printf("%s\n", registerName[getRs(ir)]);
+      break;
+    }
+    case 24: { // 011000 (mult), R-Type, mult rs, rt
+      printf("mult ");
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 25: { // 011001 (multu), R-Type, multu rs, rt
+      printf("multu ");
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 26: { // 011010 (div), R-Type, div rs, rt
+      printf("div ");
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 32: { // 100000 -> add, R-Type.
+      printf("add ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 33: { // 100001 (addu), R-Type, addu rd, rs, rt
+      printf("addu ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 34: { // 100010 -> sub, R-Type.
+      printf("sub ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 35: { // 100011 -> subu, R-Type.
+      printf("subu ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 36: { // 100100 (and), R-Type, and rd, rs, rt
+      printf("and ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 37: { // 100101 (or), R-Type, or rd, rs, rt
+      printf("or ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 38: { // 100110 (xor), R-Type, xor rd, rs, rt
+      printf("xor ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 39: { // 100111 (nor), R-Type, nor rd, rs, rt
+      printf("nor ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 42: { // 101010 (slt), R-Type, slt rd, rs, rt
+      printf("slt ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 43: { // 101011 (sltu), R-Type, sltu rd, rs, rt
+      printf("sltu ");
+      printf("%s, ", registerName[getRd(ir)]);
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 48: { // 110000 (tge), R-Type, tge rs, rt
+      printf("tge ");
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 49: { // 110001 (tgeu), R-Type, tgeu rs, rt
+      printf("tgeu ");
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 50: { // 110010 (tlt), R-Type, tlt rs, rt
+      printf("tlt ");
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 51: { // 110011 (tltu), R-Type, tltu rs, rt
+      printf("tltu ");
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 52: { // 110100 (teq), R-Type, teq rs, rt
+      printf("teq ");
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
+    case 54: { // 110110 (tne), R-Type, tne rs, rt
+      printf("tne ");
+      printf("%s, ", registerName[getRs(ir)]);
+      printf("%s\n", registerName[getRt(ir)]);
+      break;
+    }
     default: // outros casos.
-      fprintf(stdout, "Instrução não implementada. OpCode: %d.\n", getOpCode(ir));
+      fprintf(stdout, "Instrução não implementada. FunctCode: %d.\n", getFunct(ir));
+    }    
+    break;    
+  }
+  case 2: { // 000010 -> j address (26), J-Type
+    printf("j ");
+    printf("0x%0.8X\n", getAddress(ir));
+    break;
+  }
+  case 3: { // 000011 -> jal address (31), J-Type
+    printf("jal ");
+    printf("0x%0.8X\n", getAddress(ir));
+    break;
+  }
+  case 4: { // 000100 (beq), I-Type, beq rs, rt, EndBranch
+    printf("beq ");
+    printf("%s, ", registerName[getRs(ir)]);
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%d\n", getImmediate(ir));
+    break;
+  }
+  case 5: { // 000101 (bne), I-Type, bne rs, rt, imm
+    printf("bne ");
+    printf("%s, ", registerName[getRs(ir)]);
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%d\n", getImmediate(ir));
+    break;
+  }
+  case 6: { // 000110 (blez), I-Type, blez rs, imm
+    printf("blez ");
+    printf("%s, ", registerName[getRs(ir)]);
+    printf("%d\n", getImmediate(ir));
+    break;
+  }
+  case 7: { // 000111 (bgtz), I-Type, bgtz rs, imm
+    printf("bgtz ");
+    printf("%s, ", registerName[getRs(ir)]);
+    printf("%d\n", getImmediate(ir));
+    break;
+  }
+  case 8: { // 001000 (addi), I-Type, addi rt, imm
+    printf("addi ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%s, ", registerName[getRs(ir)]);
+    printf("%d\n", getImmediate(ir));
+    break;
+  }
+  case 9: { // 001001 (addiu), I-Type, addiu rt, rs, imm
+    printf("addiu ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%s, ", registerName[getRs(ir)]);
+    printf("%d\n", getImmediate(ir));
+    break;
+  }
+  case 10: { // 001010 (slti), I-Type, slti rt, rs, imm
+    printf("slti ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%s, ", registerName[getRs(ir)]);
+    printf("%d\n", getImmediate(ir));
+    break;
+  }
+  case 11: { // 001011 (sltiu), I-Type, sltiu rt, rs, imm
+    printf("sltiu ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%s, ", registerName[getRs(ir)]);
+    printf("%d\n", getImmediate(ir));
+    break;
+  }
+  case 12: { // 001100 (andi), I-Type, andi rt, rs, imm
+    printf("andi ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%s, ", registerName[getRs(ir)]);
+    printf("%d\n", getImmediate(ir));
+    break;
+  }
+  case 13: { // 001101 (ori), I-Type, ori rt, rs, imm
+    printf("ori ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%s, ", registerName[getRs(ir)]);
+    printf("%d\n", getImmediate(ir));
+    break;
+  }
+  case 14: { // 001110 (xori), I-Type, xori rt, rs, imm
+    printf("xori ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%s, ", registerName[getRs(ir)]);
+    printf("%d\n", getImmediate(ir));
+    break;
+  }
+  case 15: { // 001111 (lui), I-Type, lui rt, imm
+    printf("lui ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%d\n", getImmediate(ir));
+    break;
+  }
+  case 27: { // 011011 (divu), R-Type, divu rs, rt
+    printf("divu ");
+    printf("%s, ", registerName[getRs(ir)]);
+    printf("%s\n", registerName[getRt(ir)]);
+    break;
+  }    
+  case 28: { // 011100 (mul), R-Type, mul rd, rs, rt
+    printf("mul ");
+    printf("%s, ", registerName[getRd(ir)]);
+    printf("%s, ", registerName[getRs(ir)]);
+    printf("%s\n", registerName[getRt(ir)]);
+    break;
+  }
+  case 32: { // 100000 (lb), I-Type, lb rt, imm(rs)
+    printf("lb ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%d", getImmediate(ir));
+    printf("(%s)\n", registerName[getRs(ir)]);
+    break;
+  }
+  case 33: { // 100001 (lh), I-Type, lh rt, imm(rs)
+    printf("lh ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%d", getImmediate(ir));
+    printf("(%s)\n", registerName[getRs(ir)]);
+    break;
+  }
+  case 34: { // 100010 (lwl), I-Type, lwl rt, imm(rs)
+    printf("lwl ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%d", getImmediate(ir));
+    printf("(%s)\n", registerName[getRs(ir)]);
+    break;
+  }
+  case 35: { // 100011 (lw), I-Type, lw rt, imm(rs)
+    printf("lw ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%d", getImmediate(ir));
+    printf("(%s)\n", registerName[getRs(ir)]);
+    break;    
+  }
+  case 40: { // 101000 (sb), I-Type, sb rt, imm(rs)
+    printf("sb ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%d", getImmediate(ir));
+    printf("(%s)\n", registerName[getRs(ir)]);
+    break;
+  }
+  case 41: { // 101001 (sh), I-Type, sh rt, imm(rs)
+    printf("sh ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%d", getImmediate(ir));
+    printf("(%s)\n", registerName[getRs(ir)]);
+    break;
+  }
+  case 42: { // 101010 (swl), I-Type, swl rt, imm(rs)
+    printf("swl ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%d", getImmediate(ir));
+    printf("(%s)\n", registerName[getRs(ir)]);
+    break;
+  }
+  case 43: { // 101011 (sw), I-Type, sw rt, imm(rs)
+    printf("sw ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%d", getImmediate(ir));
+    printf("(%s)\n", registerName[getRs(ir)]);
+    break;
+  }
+  case 46: { // 101110 (swr), I-Type, swr rt, imm(rs)
+    printf("swr ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%d", getImmediate(ir));
+    printf("(%s)\n", registerName[getRs(ir)]);
+    break;
+  }
+  case 56: { // 111000 (sc), I-Type, sc rt, imm(rs)
+    printf("sc ");
+    printf("%s, ", registerName[getRt(ir)]);
+    printf("%d", getImmediate(ir));
+    printf("(%s)\n", registerName[getRs(ir)]);
+    break;
+  }
+  default: // outros casos.
+    fprintf(stdout, "Instrução não implementada. OpCode: %d.\n", getOpCode(ir));
   }
 }
 
@@ -205,7 +579,7 @@ int main(int argc, char *argv[]) {
 
   while (getline(&linha, &len, arquivo) > 0) {
     TRACE("Linha: %s\n", linha);
-    // teste: bin_prnt_byte(0x8C130004);
+    //teste: bin_prnt_byte(0x8C130004);
     ir = intFromBinary(linha);
     TRACE("IR: %u\n", ir);
     decodificar(ir);

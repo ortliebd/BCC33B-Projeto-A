@@ -87,7 +87,11 @@ END_IF:
 main:
 
 DO:
-        addi        $t0, $zero, 0       #num_movimento = 0;
+        la          $t9, num_movimento  #++num_movimento
+        lw          $s0, 0($t9)
+        addi        $s0, $zero, 0
+        sw          $s0, 0($t9)
+        
 
         li          $v0, 4              #printf ("Informe o número de discos: ");
         la          $a0, out3
@@ -117,4 +121,5 @@ DO:
         lw          $t1, literal
         beq         $t0, $t1, DO        
 WHILE:
-        
+        li          $v0, 10             
+        syscall 
