@@ -1,0 +1,96 @@
+
+%
+%  $Description: Author guidelines and sample document in LaTeX 2.09$ 
+%
+%  $Author: ienne $
+%  $Date: 1995/09/15 15:20:59 $
+%  $Revision: 1.4 $
+%
+
+\documentclass[times, 10pt,twocolumn]{article} 
+\usepackage{latex8}
+\usepackage{times}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{graphicx, url}
+\usepackage{listings}
+
+\usepackage[alf,abnt-emphasize=bf,abnt-full-initials=yes]{abntex2cite} %Pacote abntex -  http://abntex.codigolivre.org.br/
+
+%\documentstyle[times,art10,twocolumn,latex8]{article}
+
+\usepackage[usenames]{color}
+
+\definecolor{red}{rgb}{0.6,0,0} % for strings
+\definecolor{green}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{purple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{docblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+\definecolor{DarkBlue}{rgb}{0,0,0.61}
+\definecolor{DarkGreen}{rgb}{0,0.4,0}
+
+\lstset{
+  language=vhdl,
+  basicstyle=\ttfamily\fontsize{10}{11}\selectfont,
+  keywordstyle=\color{purple}\bfseries,
+  stringstyle=\color{red},
+  commentstyle=\color{green},
+  morecomment=[s][\color{docblue}]{/*}{*/},
+  numbers=left,
+  numberstyle=\tiny\color{black},
+  stepnumber=1,
+  numbersep=10pt,
+  tabsize=4,
+  showspaces=false,
+  showstringspaces=false,
+  otherkeywords={\#include, \#define, \#pragma, \#typedef, dim3},
+  emph={ __device__, __global__, __shared__, __host__, __constant__},
+  emphstyle=\color{DarkBlue}\bfseries,
+  emph={[2] printf, scanf},
+  emphstyle=[2]\color{DarkGreen},
+  extendedchars=true,
+  frame=tb,
+  breaklines=true
+}
+
+\usepackage{caption}
+\DeclareCaptionFont{black}{\color{black}}
+
+\renewcommand{\lstlistingname}{Código}
+
+\usepackage{footnote}
+
+%------------------------------------------------------------------------- 
+% take the % away on next line to produce the final camera-ready version 
+\pagestyle{empty}
+
+%------------------------------------------------------------------------- 
+\begin{document}
+\begin{savenotes}
+\title{Projeto A\footnote{Trabalho desenvolvido para a disciplina de BCC33B – Arquitetura e Organização de Computadores.}}
+
+
+\author{Douglas Juares Ortlieb, Reinaldo Teixeira\\
+Coordenação do Curso de Bacharelado em Ciência da Computação - COCIC\\
+Universidade Tecnológica Federal do Paraná - UTFPR\\ 
+Campus Campo Mourão\\
+Campo Mourão, Paraná, Brasil\\
+ortliebd@alunos.utfpr.edu.br e segundo@email.com.br\\
+% For a paper whose authors are all at the same institution, 
+% omit the following lines up until the closing ``}''.
+% Additional authors and addresses can be added with ``\and'', 
+% just like the second author.
+}
+
+\maketitle
+\thispagestyle{empty}
+
+\input{abstract}
+\input{introducao}
+\input{mips}
+
+\end{savenotes}
+\bibliographystyle{latex8}
+\bibliography{bibliografia}
+
+\end{document}

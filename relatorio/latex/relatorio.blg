@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99d (TeX Live 2018/Arch Linux)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: relatorio.aux
+The style file: latex8.bst
+Database file #1: abntex2-options.bib
+Warning--entry type for "abnt-emphasize=bf" isn't style-file defined
+--line 29 of file abntex2-options.bib
+Warning--entry type for "abnt-full-initials=yes" isn't style-file defined
+--line 92 of file abntex2-options.bib
+Warning--entry type for "abnt-url-package=url" isn't style-file defined
+--line 199 of file abntex2-options.bib
+Database file #2: bibliografia.bib
+Warning--all relevant fields are empty in abnt-url-package=url
+Warning--all relevant fields are empty in abnt-emphasize=bf
+Warning--all relevant fields are empty in abnt-full-initials=yes
+You've used 3 entries,
+            2118 wiz_defined-function locations,
+            503 strings with 3831 characters,
+and the built_in function-call counts, 434 in all, are:
+= -- 24
+> -- 3
+< -- 0
++ -- 3
+- -- 0
+* -- 17
+:= -- 42
+add.period$ -- 3
+call.type$ -- 3
+change.case$ -- 9
+chr.to.int$ -- 0
+cite$ -- 6
+duplicate$ -- 21
+empty$ -- 70
+format.name$ -- 0
+if$ -- 100
+int.to.chr$ -- 0
+int.to.str$ -- 3
+missing$ -- 0
+newline$ -- 12
+num.names$ -- 0
+pop$ -- 21
+preamble$ -- 1
+purify$ -- 9
+quote$ -- 0
+skip$ -- 36
+stack$ -- 0
+substring$ -- 15
+swap$ -- 3
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 12
+warning$ -- 3
+while$ -- 0
+width$ -- 4
+write$ -- 14
+(There were 6 warnings)
