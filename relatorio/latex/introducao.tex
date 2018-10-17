@@ -5,7 +5,7 @@ Contudo, as linguagens de alto nível não podem ser executadas diretamente no c
 
 Neste artigo explicaremos o processo de transformação utilizando um programa escrito na linguagem C, alto nível, convertendo-o para \textit{assembly} e em seguida para linguagem de máquina, onde finalmente poderá ser executado.
 
-As linguagens \textit{assembly} representam um nível intermediário de instruções, utilizam um montador para traduzir uma notação simbólica para binário e são escritas para arquiteturas específicas de microprocessadores, portanto faremos uso de um processador MIPS (\textit{Microprocessor without Interlocked Pipeline Stages}) do tipo RISC(\textit{Reduced Instruction Set Computer}) dado a sua simplicidade e seus fins didáticos. 
+As linguagens \textit{assembly} representam um nível intermediário de instruções, utilizam um montador para traduzir uma notação simbólica para binário e são escritas para arquiteturas específicas de microprocessadores, portanto faremos uso de um processador MIPS (\textit{Microprocessor without Interlocked Pipeline Stages} - Microprocessador com Estágios de Pipeline Integrado) do tipo RISC (\textit{Reduced Instruction Set Computer} - Computador com Conjunto de Instruções Reduzidos) dado a sua simplicidade e seus fins didáticos. 
 
 Também é possível realizar o processo reverso, ou seja, transformar um código binário em \textit{assembly} e de \textit{assembly} para uma linguagem de alto nível. Parte deste trabalho consiste na implementação de um \textit{disassembler} (desmontador) em C responsável por converter o código binário em \textit{assembly}.
 

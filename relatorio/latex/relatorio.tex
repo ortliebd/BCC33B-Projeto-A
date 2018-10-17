@@ -8,15 +8,18 @@
 %
 
 \documentclass[times, 10pt,twocolumn]{article} 
+\usepackage[T1]{fontenc}
 \usepackage{latex8}
 \usepackage{times}
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
 \usepackage{graphicx, url}
 \usepackage{listings}
+\usepackage{tabularx}
 
-\usepackage[alf,abnt-emphasize=bf,abnt-full-initials=yes]{abntex2cite} %Pacote abntex -  http://abntex.codigolivre.org.br/
-
+\usepackage[center]{caption}
+\usepackage[num,abnt-full-initials=yes]{abntex2cite}
+\citebrackets[]
 %\documentstyle[times,art10,twocolumn,latex8]{article}
 
 \usepackage[usenames]{color}
@@ -87,10 +90,10 @@ ortliebd@alunos.utfpr.edu.br e segundo@email.com.br\\
 
 \input{abstract}
 \input{introducao}
+\end{savenotes}
 \input{mips}
 
-\end{savenotes}
-\bibliographystyle{latex8}
+%\bibliographystyle{latex8}
 \bibliography{bibliografia}
 
 \end{document}
