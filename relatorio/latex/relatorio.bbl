@@ -1,0 +1,14 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{v-1.9.6 }
+
+\bibitem{patterson1}
+\abntrefinfo{Patterson e Hennessy}{PATTERSON; HENNESSY}{2005}
+{PATTERSON, David~A.; HENNESSY, John~L. \emph{Organização e Projeto de
+  Computadores: a interface hardware/software}. Rio de Janeiro: Elsevier,
+  2005.}
+
+\end{thebibliography}
