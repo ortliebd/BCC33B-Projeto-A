@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.11)  17 OCT 2018 09:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.10.11)  18 OCT 2018 00:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -21,14 +21,7 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-)
-(/usr/share/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
-
-(/usr/share/texmf-dist/tex/latex/base/t1enc.def
-File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
-)) (./latex8.sty
+) (./latex8.sty
 IEEE 8.5 x 11-Inch Proceedings Style `latex8.sty'.
 \@ctmp=\skip43
 \@figindent=\skip44
@@ -133,7 +126,7 @@ Package: array 2018/04/30 v2.4h Tabular extension package (FMi)
 \TX@delta=\dimen116
 \TX@cols=\count98
 \TX@ftn=\toks19
-)
+) (./mips.sty)
 (/usr/share/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2018/05/01 v3.3-147 Customizing captions (AR)
 
@@ -216,9 +209,6 @@ Package color Info: Driver file: pdftex.def on input line 147.
 Package color Info: Redefining color red on input line 27.
 Package color Info: Redefining color green on input line 28.
 
-(/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2018/09/02 1.7 listings language file
-)
 (/usr/share/texmf-dist/tex/latex/mdwtools/footnote.sty
 Package: footnote 1997/01/28 1.13 Save footnotes around boxes
 \fn@notes=\box30
@@ -231,21 +221,21 @@ LaTeX Warning: Unused global option(s):
 (./relatorio.aux)
 \openout1 = `relatorio.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 71.
- (/usr/share/texmf-dist/tex/latex/psnfss/t1ptm.fd
-File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 68.
+ (/usr/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -315,57 +305,83 @@ e
 \c@lstlisting=\count111
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 88.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 85.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 88.
+(Font)              <14.4> on input line 85.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 88.
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 88.
+(Font)              <7> on input line 85.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 85.
 
 (/usr/share/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 88.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 85.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 88.
+(Font)              <8> on input line 85.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 88.
+(Font)              <6> on input line 85.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 88.
+(Font)              <5> on input line 85.
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <6> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 88.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 85.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 88.
+(Font)              <12> on input line 85.
  (./abstract.tex
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
 )
-(./introducao.tex) (./mips.tex) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdfte
-x.map}
+(./introducao.tex
+Underfull \hbox (badness 1565) in paragraph at lines 4--5
+\OT1/ptm/m/n/10 codifica[][]ao na qual o com-pu-ta-dor as en-tenda. Essa
+ []
 
 
-] (./relatorio.bbl) [2
+Underfull \hbox (badness 2426) in paragraph at lines 4--5
+\OT1/ptm/m/n/10 codifica[][]ao []e co-nhe-cida como sis-tema de numera[][]ao
+ []
 
-] (./relatorio.aux) ) 
+) (./mips.tex
+Overfull \hbox (1.86703pt too wide) in paragraph at lines 21--22
+ [] 
+ []
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+
+]
+<figuras/MIPS-Instruction-Type_W840.jpg, id=12, 377.41pt x 211.79124pt>
+File: figuras/MIPS-Instruction-Type_W840.jpg Graphic file (type jpg)
+<use figuras/MIPS-Instruction-Type_W840.jpg>
+Package pdftex.def Info: figuras/MIPS-Instruction-Type_W840.jpg  used on input 
+line 32.
+(pdftex.def)             Requested size: 238.48886pt x 133.83315pt.
+
+Overfull \hbox (1.35292pt too wide) in paragraph at lines 32--33
+ [][] 
+ []
+
+) (./relatorio.bbl) [2 <./figuras/MIPS-Instruction-Type_W840.jpg>]
+(./relatorio.aux) ) 
 Here is how much of TeX's memory you used:
- 5522 strings out of 492642
- 80007 string characters out of 6135565
- 344080 words of memory out of 5000000
- 9296 multiletter control sequences out of 15000+600000
- 31607 words of font info for 45 fonts, out of 8000000 for 9000
+ 5341 strings out of 492642
+ 78917 string characters out of 6135565
+ 171186 words of memory out of 5000000
+ 9120 multiletter control sequences out of 15000+600000
+ 20464 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,10n,40p,906b,372s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/s
-hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/u
-rw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
-sr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on relatorio.pdf (2 pages, 63098 bytes).
+ 41i,14n,45p,1152b,371s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/sha
+re/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.
+pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-d
+ist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on relatorio.pdf (2 pages, 99235 bytes).
 PDF statistics:
- 32 PDF objects out of 1000 (max. 8388607)
- 22 compressed objects within 1 object stream
+ 37 PDF objects out of 1000 (max. 8388607)
+ 25 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

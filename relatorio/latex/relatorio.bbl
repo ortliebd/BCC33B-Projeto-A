@@ -11,4 +11,19 @@
   Computadores: a interface hardware/software}. Rio de Janeiro: Elsevier,
   2005.}
 
+\bibitem{cruz1}
+\abntrefinfo{Cruz}{CRUZ}{2009}
+{CRUZ, Vicente~Silva.
+\emph{Expansão da Arquitetura de Conjunto de Instruções MIPS para Suporte à
+  Robótica}.
+Monografia (TCC) --- Universidade Federal do Rio Grande do Sul, 2009.}
+
+\bibitem{misc1}
+\abntrefinfo{Design\ldots}{DESIGN\ldots}{}
+{DESIGN of High Performance MIPS Cryptography Processor Based on T-DES
+  Algorithm.
+Dispon{\'\i}vel em:
+  \url{https://www.researchgate.net/MIPS-Instruction-Type\_fig1\_273471801}.
+  Acesso em: 17 out. 2018.}
+
 \end{thebibliography}

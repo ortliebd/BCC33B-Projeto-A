@@ -8,7 +8,6 @@
 %
 
 \documentclass[times, 10pt,twocolumn]{article} 
-\usepackage[T1]{fontenc}
 \usepackage{latex8}
 \usepackage{times}
 \usepackage[utf8]{inputenc}
@@ -16,6 +15,7 @@
 \usepackage{graphicx, url}
 \usepackage{listings}
 \usepackage{tabularx}
+\usepackage{mips}
 
 \usepackage[center]{caption}
 \usepackage[num,abnt-full-initials=yes]{abntex2cite}
@@ -33,7 +33,7 @@
 \definecolor{DarkGreen}{rgb}{0,0.4,0}
 
 \lstset{
-  language=vhdl,
+  language=[mips]Assembler,
   basicstyle=\ttfamily\fontsize{10}{11}\selectfont,
   keywordstyle=\color{purple}\bfseries,
   stringstyle=\color{red},
@@ -46,10 +46,7 @@
   tabsize=4,
   showspaces=false,
   showstringspaces=false,
-  otherkeywords={\#include, \#define, \#pragma, \#typedef, dim3},
-  emph={ __device__, __global__, __shared__, __host__, __constant__},
   emphstyle=\color{DarkBlue}\bfseries,
-  emph={[2] printf, scanf},
   emphstyle=[2]\color{DarkGreen},
   extendedchars=true,
   frame=tb,
